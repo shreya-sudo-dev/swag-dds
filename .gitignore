@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+venv/
+env/
+
+# C++ Build Artifacts
+*.o
+*.so
+*.dylib
+*.dll
+*.pyd
+build/
+dist/
+*.egg-info/
+
+# Project Specific
+mission_simulation.wav
