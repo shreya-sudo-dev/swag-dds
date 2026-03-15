@@ -46,16 +46,16 @@ python simulation/generate_scenario.py
 
 ### Experimental Results
 Gunshot Detection Performance
-Accuracy - 1.00
-Precision - 1.00
-Recall - 1.00
-F1 Score - 1.00
+* Accuracy - 1.00
+* Precision - 1.00
+* Recall - 1.00
+* F1 Score - 1.00
 
 ### Localization & Real-Time Metrics
-Mean Direction Error - 2.105°
-Mean Latency - 3.97 ms
-Max Latency - 7.05 ms
-Min Latency - 3.67 ms
+* Mean Direction Error - 2.105°
+* Mean Latency - 3.97 ms
+* Max Latency - 7.05 ms
+* Min Latency - 3.67 ms
 
 
 🧪 Reproducibility
