@@ -3,36 +3,6 @@
 SWAG-DDS is a hybrid C++/Python acoustic surveillance system designed to detect gunshot signatures and estimate Direction of Arrival (DoA) using a 3-microphone array.
 
 It utilizes a **C++ Acceleration Layer** for heavy signal processing (GCC-PHAT, FFT) and a **Python Intelligence Layer** for spectral classification and User Interface.
-
-## 🏗 System Architecture
-
-  Microphone Array (3 Channels)
-               │
-               ▼
-       Audio Capture Buffer
-               │
-               ▼
-       Signal Preprocessing
-               │
-               ▼
-      Feature Extraction
-(Energy, ZCR, Spectral Features)
-               │
-               ▼
-    Machine Learning Classifier
-               │
-       ┌───────┴────────┐
-       ▼                ▼
- Gunshot Detected     No Event
-       │
-       ▼
- GCC-PHAT Localization
-       │
-       ▼
-Direction of Arrival (DoA)
-               │
-               ▼
-     Threat Direction Output 
      
 ## Processing Pipeline
 
