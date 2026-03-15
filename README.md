@@ -57,6 +57,16 @@ Gunshot Detection Performance
 * Max Latency - 7.05 ms
 * Min Latency - 3.67 ms
 
+### 🔊 Robustness & Mixed Signal Analysis
+The system was evaluated against composite acoustic environments to simulate urban clutter.
+
+| Scenario | Signal Composition | Detection Accuracy |
+| :--- | :--- | :--- |
+| **Clean** | Gunshot only | 1.00 |
+| **Urban Ambient** | Gunshot + Gaussian White Noise (0dB SNR) | 0.94 |
+| **Impulsive Interference** | Gunshot + Door Slams/Construction | 0.61 |
+
+*Note: Performance on impulsive noise is currently being optimized through Spectral Subtraction and Median Filtering in the DSP layer.*
 
 🧪 Reproducibility
 To reproduce the experimental results published in the paper, execute the research scripts in the following order:
