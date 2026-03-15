@@ -4,6 +4,45 @@ SWAG-DDS is a hybrid C++/Python acoustic surveillance system designed to detect 
 
 It utilizes a **C++ Acceleration Layer** for heavy signal processing (GCC-PHAT, FFT) and a **Python Intelligence Layer** for spectral classification and User Interface.
 
+## 🏗 System Architecture
+
+  Microphone Array (3 Channels)
+               │
+               ▼
+       Audio Capture Buffer
+               │
+               ▼
+       Signal Preprocessing
+               │
+               ▼
+      Feature Extraction
+(Energy, ZCR, Spectral Features)
+               │
+               ▼
+    Machine Learning Classifier
+               │
+       ┌───────┴────────┐
+       ▼                ▼
+ Gunshot Detected     No Event
+       │
+       ▼
+ GCC-PHAT Localization
+       │
+       ▼
+Direction of Arrival (DoA)
+               │
+               ▼
+     Threat Direction Output 
+     
+## Processing Pipeline
+
+* `Audio Input/`: Multi-channel stream capture.
+* `Signal Buffering/`: Real-time windowing and Hann window application.
+* `Feature Extraction/`: Calculation of temporal and spectral descriptors.
+* `Gunshot Classification/`: ML-based binary discrimination.
+* `GCC-PHAT Localization/`: Time Difference of Arrival (TDoA) estimation.
+* `DoA Estimation/`: Mapping TDoA to angular coordinates.
+
 ## Project Structure
 
 * `core/`: C++ DSP Engine (Buffer management, FFT, GCC-PHAT).
@@ -32,3 +71,35 @@ It utilizes a **C++ Acceleration Layer** for heavy signal processing (GCC-PHAT, 
 First, create the synthetic acoustic scenario (Gunshots at specific angles):
 ```bash
 python simulation/generate_scenario.py
+```
+
+
+### Experimental Results
+Gunshot Detection Performance
+Accuracy - 1.00
+Precision - 1.00
+Recall - 1.00
+F1 Score - 1.00
+
+### Localization & Real-Time Metrics
+Mean Direction Error - 2.105°
+Mean Latency - 3.97 ms
+Max Latency - 7.05 ms
+Min Latency - 3.67 ms
+
+
+🧪 Reproducibility
+To reproduce the experimental results published in the paper, execute the research scripts in the following order:
+
+```bash
+python experiments/generate_dataset.py
+python experiments/extract_features.py
+python experiments/train_classifier.py
+python experiments/compute_metrics.py
+python experiments/exp_localization_accuracy.py
+python experiments/exp_latency.py
+```
+### License and Author
+Author: Shreya Sable
+License: MIT
+Acoustic Event Detection Research Project.
