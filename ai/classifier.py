@@ -12,33 +12,32 @@ class GunshotClassifier:
         
         self.fs = 44100 
 
-    def is_gunshot(self, audio: np.ndarray) -> bool:
-
+    def compute_score(self, audio):
         max_val = np.max(np.abs(audio)) + 1e-6
         audio = audio.astype(np.float32) / max_val
 
-        
         energy = np.sum(audio**2)
         zcr = ((audio[:-1] * audio[1:]) < 0).sum()
         peak = np.max(np.abs(audio))
-        
-        
+
         spectrum = np.abs(np.fft.rfft(audio))
-        
-        
         frequencies = np.linspace(0, self.fs/2, len(spectrum))
-        
+
         sum_mag = np.sum(spectrum) + 1e-6
         centroid = np.sum(frequencies * spectrum) / sum_mag
-        
+
         centroid_norm = centroid / (self.fs/2)
 
         score = (
-            (self.w_energy   * energy) + 
-            (self.w_zcr      * zcr) + 
-            (self.w_peak     * peak) + 
-            (self.w_centroid * centroid_norm) + 
+            self.w_energy*energy +
+            self.w_zcr*zcr +
+            self.w_peak*peak +
+            self.w_centroid*centroid_norm +
             self.bias
         )
 
-        return score > 0
+        return score
+    
+    def is_gunshot(self, audio):
+        score = self.compute_score(audio)
+        return score > 0.5

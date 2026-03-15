@@ -1,7 +1,11 @@
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
+*.wav
+*.npy
 .pytest_cache/
 venv/
 env/
@@ -18,3 +22,7 @@ dist/
 
 # Project Specific
 mission_simulation.wav
+
+dataset/
+results/
+
